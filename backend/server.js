@@ -23,6 +23,7 @@ app.use("/api/folder", require("./routes/folder.routes"));
 app.use("/api/note", require("./routes/note.routes"));
 app.use("/api/material", require("./routes/material.routes"));
 app.use("/api/ai", require("./routes/ai.routes"));
+app.use("/api/analytics", require("./routes/analytics.routes"));
 
 // Health check
 app.get("/", (req, res) => {
