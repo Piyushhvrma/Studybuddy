@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 
+
 // Pages
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -10,6 +11,7 @@ import Notes from "./pages/Notes";
 import Materials from "./pages/Materials";
 import AIAssistant from "./pages/AIAssistant";
 import Profile from "./pages/Profile";
+import Analytics from "./pages/Analytics";
 
 // Layout
 import Navbar from "./components/Navbar";
@@ -47,6 +49,7 @@ function AppRoutes() {
       <Route path="/materials" element={<ProtectedRoute><AppLayout><Materials /></AppLayout></ProtectedRoute>} />
       <Route path="/ai" element={<ProtectedRoute><AppLayout><AIAssistant /></AppLayout></ProtectedRoute>} />
       <Route path="/profile" element={<ProtectedRoute><AppLayout><Profile /></AppLayout></ProtectedRoute>} />
+      <Route path="/analytics" element={<ProtectedRoute><AppLayout><Analytics /></AppLayout></ProtectedRoute>} />
     </Routes>
   );
 }

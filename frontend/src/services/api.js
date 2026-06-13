@@ -51,4 +51,7 @@ export const sendMessage = (data) => API.post("/ai/chat", data);
 export const getChatHistory = () => API.get("/ai/history");
 export const clearChatHistory = () => API.delete("/ai/history");
 
+// Analytics
+export const getAnalyticsOverview = () => API.get("/analytics/overview");
+
 export default API;

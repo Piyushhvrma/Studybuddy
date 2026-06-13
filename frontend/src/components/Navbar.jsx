@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import {
   RiDashboardLine, RiCalendarCheckLine, RiStickyNoteLine,
   RiBookOpenLine, RiRobot2Line, RiUserLine, RiLogoutBoxLine,
-  RiFlashlightLine, RiMenuLine, RiCloseLine
+  RiFlashlightLine, RiMenuLine, RiCloseLine, RiBarChartBoxLine
 } from "react-icons/ri";
 import { useState } from "react";
 
@@ -12,6 +12,7 @@ const navItems = [
   { path: "/tracker", label: "Tracker", icon: RiCalendarCheckLine },
   { path: "/notes", label: "Notes", icon: RiStickyNoteLine },
   { path: "/materials", label: "Materials", icon: RiBookOpenLine },
+  { path: "/analytics", label: "Analytics", icon: RiBarChartBoxLine },
   { path: "/ai", label: "AI Assistant", icon: RiRobot2Line },
   { path: "/profile", label: "Profile", icon: RiUserLine },
 ];
