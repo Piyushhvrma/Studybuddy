@@ -5,13 +5,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const http = require("http");
+const { Server } = require("socket.io");
 
 dotenv.config();
 
 const app = express();
 
+const allowedOrigin = process.env.CLIENT_URL || "*";
+
 // Middleware
-app.use(cors({ origin: process.env.CLIENT_URL || "*", credentials: true }));
+app.use(
+  cors({
+    origin: allowedOrigin,
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -24,20 +34,39 @@ app.use("/api/note", require("./routes/note.routes"));
 app.use("/api/material", require("./routes/material.routes"));
 app.use("/api/ai", require("./routes/ai.routes"));
 app.use("/api/analytics", require("./routes/analytics.routes"));
+app.use("/api/room", require("./routes/room.routes"));
 
 // Health check
 app.get("/", (req, res) => {
   res.json({ message: "Momentum AI API is running 🚀" });
 });
 
-// Connect to MongoDB and start server
+// Create HTTP server for Express + Socket.io
+const server = http.createServer(app);
+
+// Socket.io setup
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigin,
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
+
+// Socket events
+require("./socket/room.socket")(io);
+
+// Connect MongoDB and start server
 const PORT = process.env.PORT || 5000;
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB connected");
-    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+    server.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+      console.log("🔌 Socket.io ready");
+    });
   })
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err.message);

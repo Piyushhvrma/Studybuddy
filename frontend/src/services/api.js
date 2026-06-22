@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const API = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "/api",
 });
@@ -14,6 +15,12 @@ API.interceptors.request.use((config) => {
 // Auth
 export const registerUser = (data) => API.post("/auth/register", data);
 export const loginUser = (data) => API.post("/auth/login", data);
+// Rooms
+export const createRoom = (data) => API.post("/room/create", data);
+
+export const joinRoom = (data) => API.post("/room/join", data);
+
+export const getRoomByCode = (roomCode) => API.get(`/room/${roomCode}`);
 
 // User
 export const getProfile = () => API.get("/user/profile");

@@ -4,7 +4,8 @@ import { useAuth } from "../context/AuthContext";
 import { getProfile, getAllEntries } from "../services/api";
 import {
   RiFireLine, RiStickyNoteLine, RiBookOpenLine, RiCalendarCheckLine,
-  RiArrowRightLine, RiTrophyLine, RiFlashlightLine
+  RiArrowRightLine, RiTrophyLine, RiFlashlightLine,
+  RiTeamLine, RiChat3Line, RiBrushLine
 } from "react-icons/ri";
 
 const QUOTES = [
@@ -93,6 +94,78 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
+
+      {/* Collaborative Study Room Feature */}
+<div className="glass-card p-6 md:p-8 relative overflow-hidden border-accent-purple/30">
+  <div className="absolute top-0 right-0 w-72 h-72 bg-accent-purple/10 rounded-full blur-3xl pointer-events-none" />
+  <div className="absolute bottom-0 left-0 w-52 h-52 bg-accent-indigo/10 rounded-full blur-3xl pointer-events-none" />
+
+  <div className="relative grid md:grid-cols-[1.4fr_1fr] gap-6 items-center">
+    <div>
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-purple/10 border border-accent-purple/20 text-accent-glow text-xs font-semibold mb-4">
+        <RiTeamLine />
+        New Collaborative Feature
+      </div>
+
+      <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+        Study together in realtime
+      </h2>
+
+      <p className="text-white/50 leading-relaxed mb-6 max-w-2xl">
+        Create a private study room, invite friends using a room code,
+        discuss through realtime chat, and explain concepts on a shared whiteboard.
+      </p>
+
+      <div className="flex flex-wrap gap-3 mb-6">
+        <span className="badge bg-white/5 text-white/60 border border-white/10">
+          <RiChat3Line className="text-accent-glow" />
+          Realtime Chat
+        </span>
+        <span className="badge bg-white/5 text-white/60 border border-white/10">
+          <RiBrushLine className="text-accent-glow" />
+          Shared Whiteboard
+        </span>
+        <span className="badge bg-white/5 text-white/60 border border-white/10">
+          <RiTeamLine className="text-accent-glow" />
+          Group Study
+        </span>
+      </div>
+
+      <Link to="/rooms" className="btn-primary inline-flex items-center gap-2">
+        Open Study Rooms
+        <RiArrowRightLine />
+      </Link>
+    </div>
+
+    <div className="hidden md:block">
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-glow-sm">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-3 h-3 rounded-full bg-red-400" />
+          <div className="w-3 h-3 rounded-full bg-yellow-400" />
+          <div className="w-3 h-3 rounded-full bg-green-400" />
+        </div>
+
+        <div className="h-32 rounded-xl bg-white mb-4 relative overflow-hidden">
+          <div className="absolute left-6 top-8 w-28 h-1 bg-accent-purple rotate-12 rounded-full" />
+          <div className="absolute left-20 top-16 w-36 h-1 bg-accent-indigo -rotate-6 rounded-full" />
+          <div className="absolute right-10 top-10 w-16 h-16 border-4 border-accent-purple rounded-full" />
+          <p className="absolute bottom-3 left-4 text-black/40 text-xs font-mono">
+            Whiteboard
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <div className="bg-accent-purple/20 rounded-lg p-2 text-sm text-white/80">
+            Piyush: Explain binary search?
+          </div>
+          <div className="bg-white/5 rounded-lg p-2 text-sm text-white/60">
+            Friend: Draw it on board 👆
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {/* Motivational Quote */}

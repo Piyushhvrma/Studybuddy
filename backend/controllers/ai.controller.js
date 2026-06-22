@@ -1,9 +1,9 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const Groq = require("groq-sdk");
 const ChatHistory = require("../models/ChatHistory.model");
 
-console.log("Gemini Key Loaded:", !!process.env.GEMINI_API_KEY);
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
 
 // @route POST /api/ai/chat
 const chat = async (req, res) => {
@@ -15,8 +15,6 @@ const chat = async (req, res) => {
         message: "Question is required.",
       });
     }
-
-    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
     const systemPrompt = `
 You are Momentum AI Assistant, a helpful study and learning assistant.
@@ -33,11 +31,18 @@ You help students with:
 Give clear, structured and concise answers.
 `;
 
-    const result = await model.generateContent(
-      `${systemPrompt}\n\nUser Question: ${question}`
-    );
+    const completion = await groq.chat.completions.create({
+      model: "llama-3.1-8b-instant",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: question },
+      ],
+      temperature: 0.7,
+      max_tokens: 1024,
+    });
 
-    const response = result.response.text();
+    const response =
+      completion.choices?.[0]?.message?.content || "No response generated.";
 
     await ChatHistory.create({
       userId: req.userId,
@@ -50,9 +55,9 @@ Give clear, structured and concise answers.
       response,
     });
   } catch (err) {
-    console.error("========== GEMINI ERROR ==========");
+    console.error("========== GROQ ERROR ==========");
     console.error(err);
-    console.error("==================================");
+    console.error("================================");
 
     return res.status(500).json({
       success: false,
@@ -70,7 +75,6 @@ const getChatHistory = async (req, res) => {
 
     res.json({ history });
   } catch (err) {
-    console.error(err);
     res.status(500).json({
       message: err.message,
     });
@@ -85,10 +89,9 @@ const clearHistory = async (req, res) => {
     });
 
     res.json({
-      message: "Chat history cleared",
+      message: "Chat history cleared.",
     });
   } catch (err) {
-    console.error(err);
     res.status(500).json({
       message: err.message,
     });
