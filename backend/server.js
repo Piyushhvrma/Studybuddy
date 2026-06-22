@@ -19,7 +19,7 @@ app.use(
   cors({
     origin: allowedOrigin,
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -38,7 +38,7 @@ app.use("/api/room", require("./routes/room.routes"));
 
 // Health check
 app.get("/", (req, res) => {
-  res.json({ message: "Momentum AI API is running 🚀" });
+  res.json({ message: "StudyBuddy API is running 🚀" });
 });
 
 // Create HTTP server for Express + Socket.io

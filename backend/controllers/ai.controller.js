@@ -17,7 +17,7 @@ const chat = async (req, res) => {
     }
 
     const systemPrompt = `
-You are Momentum AI Assistant, a helpful study and learning assistant.
+You are StudyBuddy Assistant, a helpful study and learning assistant.
 
 You help students with:
 - DSA

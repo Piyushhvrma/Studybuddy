@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: momentum-ai-backend
+    name: StudyBuddy-backend
     env: node
     buildCommand: npm install
     startCommand: npm start

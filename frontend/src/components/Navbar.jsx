@@ -58,7 +58,7 @@ export default function Navbar() {
             <RiFlashlightLine className="text-white text-base" />
           </div>
           <span className="font-bold text-lg text-white tracking-tight">
-            Momentum<span className="text-accent-glow">AI</span>
+            StudyBuddy
           </span>
         </Link>
 

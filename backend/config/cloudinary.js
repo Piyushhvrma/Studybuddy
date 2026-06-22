@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "momentum-ai-materials",
+    folder: "StudyBuddy-materials",
     allowed_formats: ["pdf", "ppt", "pptx", "doc", "docx"],
     resource_type: "raw",
   },

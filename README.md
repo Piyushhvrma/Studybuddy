@@ -1,8 +1,8 @@
-# 🚀 Momentum AI
+# 🚀 StudyBuddy
 
 **An AI-powered collaborative learning platform built with the MERN Stack.**
 
-Momentum AI helps students stay consistent, organize study resources, track progress, collaborate in real time, and get instant AI-powered assistance during learning sessions.
+StudyBuddy helps students stay consistent, organize study resources, track progress, collaborate in real time, and get instant AI-powered assistance during learning sessions.
 
 ---
 
@@ -58,7 +58,7 @@ Momentum AI helps students stay consistent, organize study resources, track prog
 
 ## 🌟 Highlights
 
-Momentum AI combines **productivity tools**, **AI assistance**, and **realtime collaboration** into a single platform, allowing students to learn individually or together through collaborative study rooms with chat, whiteboard, and AI support.
+StudyBuddy combines **productivity tools**, **AI assistance**, and **realtime collaboration** into a single platform, allowing students to learn individually or together through collaborative study rooms with chat, whiteboard, and AI support.
 
 ---
 

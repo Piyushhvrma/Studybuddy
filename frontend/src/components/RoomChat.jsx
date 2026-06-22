@@ -122,9 +122,9 @@ export default function RoomChat({ roomCode, socket }) {
         type: "ai",
         text: res.data.response,
         sender: {
-          _id: "momentum-ai",
-          name: "Momentum AI",
-          email: "ai@momentum.local",
+          _id: "StudyBuddy",
+          name: "StudyBuddy",
+          email: "ai@StudyBuddy.local",
         },
         createdAt: new Date().toISOString(),
       };
@@ -139,9 +139,9 @@ export default function RoomChat({ roomCode, socket }) {
         type: "ai",
         text: "AI is not responding right now. Check API configuration.",
         sender: {
-          _id: "momentum-ai",
-          name: "Momentum AI",
-          email: "ai@momentum.local",
+          _id: "StudyBuddy",
+          name: "StudyBuddy",
+          email: "ai@StudyBuddy.local",
         },
         createdAt: new Date().toISOString(),
       };
@@ -221,8 +221,8 @@ export default function RoomChat({ roomCode, socket }) {
                   isAI
                     ? "bg-accent-indigo/20 border border-accent-indigo/30 text-white/80"
                     : isMe
-                    ? "bg-accent-purple text-white rounded-br-sm"
-                    : "bg-white/5 border border-white/10 text-white/80 rounded-bl-sm"
+                      ? "bg-accent-purple text-white rounded-br-sm"
+                      : "bg-white/5 border border-white/10 text-white/80 rounded-bl-sm"
                 }`}
               >
                 {!isMe && (

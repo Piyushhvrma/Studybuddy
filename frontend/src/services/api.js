@@ -7,7 +7,7 @@ const API = axios.create({
 
 // Attach token automatically
 API.interceptors.request.use((config) => {
-  const token = localStorage.getItem("momentum_token");
+  const token = localStorage.getItem("StudyBuddy_token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });

@@ -1,7 +1,7 @@
 {
-  "name": "momentum-ai-backend",
+  "name": "StudyBuddy-backend",
   "version": "1.0.0",
-  "description": "Momentum AI Backend API",
+  "description": "StudyBuddy Backend API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
